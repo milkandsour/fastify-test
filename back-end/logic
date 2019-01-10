@@ -1,0 +1,14 @@
+import script
+
+for item in JSON
+  for parent.id in item.parents
+    PUT reviews/<item.id>
+      parent.id > accomodation
+      item.entryDate > submission
+      item.travelDate > travel
+      ...
+PUT
+  SADD <accomodation-key> <key> [add a review to the accomodation]
+  SADD <accomodation-key>:<with> <key> [add a review for the accomodation under a given "with" category]
+  ZADD <accomodation-key>:travels date <key> [sort by travels]
+  ZADD <accomodation-key>:submissions date <key> [sort by submissions]

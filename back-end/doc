@@ -1,0 +1,82 @@
+-average
+
+sum of rating * weight / sum of the weight
+
+---REDIS structure
+
+list of all the reviews:
+  SADD <accomodation-key> <key>
+list of all the reviews by with;
+  SADD <accomodation-key>:<with> <key>
+list of all the reviews sorted by travel date;
+  ZADD <accomodation-key>:travels date <key>
+list of all the reviews sorted by submission date;
+  ZADD <accomodation-key>:submissions date <key>
+
+---REST
+
+/reviews GET
+  -limit default to 10
+  -offset default to 0
+  -with default to null
+  -accomodation (<accomodation-key>)
+
+/reviews POST -not implemented
+
+/reviews/<id> GET
+
+/reviews/<id> DELETE -not implemented
+
+/reviews/<id> PATCH -not implemented
+
+/reviews/<id> PUT
+  accomodation <accomodation-key>
+  with FAMILY | OTHER | FRIENDS | COUPLE
+  travel timestamp
+  submission timestamp
+  general 0-10
+  user string
+  locale ISO-639-1-code (boh)
+  --------------------------
+  texts:nl string
+  --------------------------
+  titles:nl string
+  --------------------------
+  aspects:location 0-10
+  aspects:service 0-10
+  aspects:priceQuality 0-10
+  aspects:food 0-10
+  aspects:room 0-10
+  aspects:childFriendly 0-10
+  aspects:interior 0-10
+  aspects:size 0-10
+  aspects:activities 0-10
+  aspects:restaurants 0-10
+  aspects:sanitaryState 0-10
+  aspects:accessibility 0-10
+  aspects:nightlife 0-10
+  aspects:culture 0-10
+  aspects:surrounding 0-10
+  aspects:atmosphere 0-10
+  aspects:noviceSkiArea 0-10
+  aspects:advancedSkiArea 0-10
+  aspects:apresSki 0-10
+  aspects:beach 0-10
+  aspects:entertainment 0-10
+  aspects:environmental 0-10
+  aspects:pool 0-10
+  aspects:terrace 0-10
+  --------------------------
+
+/accomodations GET
+
+/accomodations POST -not implemented
+
+/accomodations/<id> GET
+*score
+
+/accomodations/<id> PUT
+
+/accomodations/<id> DELETE -not implemented
+
+/accomodations/<id> PATCH -not implemented
